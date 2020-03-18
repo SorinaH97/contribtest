@@ -1,0 +1,23 @@
+import unittest
+import generate
+
+
+class Test(unittest.TestCase):
+
+    def test_read(self):
+        expected = ({"title": "Contact us!", "layout": "base.html"}, 
+                    "\nWrite an email to contact@example.com.\n")
+        result = generate.read_file('test/source/contact.rst')
+
+        self.assertEqual(result, expected)
+
+    def test_files(self):
+        result = 0
+        expected = 2
+        for files in generate.list_files('test/source'):
+            result+=1
+            
+        self.assertEqual(result, expected)
+
+if __name__ == '__main__':
+    unittest.main() 
